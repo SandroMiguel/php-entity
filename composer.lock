@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d7deb284121c39792e274b91d335704",
+    "content-hash": "038acd5da12ebf5fcabbf796957b33eb",
     "packages": [
         {
             "name": "sandromiguel/php-caster",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:SandroMiguel/php-caster.git",
-                "reference": "1f3d9fa253e1006096350234a60c4c2ffd15a702"
+                "reference": "bb6b7fc4d8224e9b3db69edc3f137dc24b62a682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SandroMiguel/php-caster/zipball/1f3d9fa253e1006096350234a60c4c2ffd15a702",
-                "reference": "1f3d9fa253e1006096350234a60c4c2ffd15a702",
+                "url": "https://api.github.com/repos/SandroMiguel/php-caster/zipball/bb6b7fc4d8224e9b3db69edc3f137dc24b62a682",
+                "reference": "bb6b7fc4d8224e9b3db69edc3f137dc24b62a682",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 "issues": "https://github.com/SandroMiguel/php-caster/issues",
                 "source": "https://github.com/SandroMiguel/php-caster/tree/main"
             },
-            "time": "2024-07-18T10:48:01+00:00"
+            "time": "2024-07-18T15:25:10+00:00"
         }
     ],
     "packages-dev": [
@@ -7875,12 +7875,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "sandromiguel/php-caster": 20,
         "roave/security-advisories": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1"
