@@ -14,9 +14,9 @@ PhpEntity is a PHP package designed to streamline the creation of entity objects
 class UserEntity extends AbstractEntity
 {
     public function __construct(
-        public int $idUser,
-        public string $username,
-        public string $email,
+        public ?int $idUser = null,
+        public ?string $username = null,
+        public ?string $email = null,
         public ?\DateTimeImmutable $createdAt = null,
         public ?\DateTimeImmutable $updatedAt = null
     ) {}
