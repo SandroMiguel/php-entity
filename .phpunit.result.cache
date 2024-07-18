@@ -1,1 +1,1 @@
-{"version":1,"defects":{"PhpCaster\\Types\\AbstractEntityTest::testHydrate":4},"times":{"PhpCaster\\Types\\AbstractEntityTest::testHydrate":0.004}}
+{"version":1,"defects":{"PhpCaster\\Types\\AbstractEntityTest::testHydrate":4,"PhpCaster\\Types\\AbstractEntityTest::testHydrateWithIncorrectTypes":3},"times":{"PhpCaster\\Types\\AbstractEntityTest::testHydrate":0.001,"PhpCaster\\Types\\AbstractEntityTest::testHydrateWithNullValues":0,"PhpCaster\\Types\\AbstractEntityTest::testHydrateWithMissingValues":0,"PhpCaster\\Types\\AbstractEntityTest::testHydrateWithIncorrectTypes":0}}
