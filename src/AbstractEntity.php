@@ -20,21 +20,22 @@ namespace PhpEntity;
 abstract class AbstractEntity
 {
     /**
-     * Creates an entity from a database row.
+     * Hydrates an entity with data from an array.
      *
-     * @param array<string,int|string|null> $row Database row containing the entity data.
+     * @param array<string,int|string|null> $properties Array containing the
+     *  entity properties.
      *
      * @return static New instance with the data from the database row.
      */
-    public static function createFromDatabaseRow(array $row): static
+    public static function hydrate(array $properties): static
     {
         $reflection = new \ReflectionClass(static::class);
-        $properties = $reflection->getProperties(
+        $reflectionProperties = $reflection->getProperties(
             \ReflectionProperty::IS_PUBLIC
         );
 
         $args = [];
-        foreach ($properties as $property) {
+        foreach ($reflectionProperties as $property) {
             $propertyName = $property->getName();
             $propertyType = (string) $property->getType();
 
@@ -47,7 +48,7 @@ abstract class AbstractEntity
                 . 'Caster';
 
             $args[$propertyName] = $casterClass::castOrNull(
-                $row,
+                $properties,
                 $propertyName
             );
         }
