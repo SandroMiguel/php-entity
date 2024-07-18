@@ -1,6 +1,6 @@
 {
     "name": "sandromiguel/php-entity",
-    "description": "Sample of PHP file structure.",
+    "description": "A PHP package for hydrating entity objects from database rows.",
     "homepage": "https://github.com/SandroMiguel/php-entity",
     "keywords": [
         "php",
@@ -38,8 +38,15 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:SandroMiguel/php-caster.git"
+        }
+    ],
     "require": {
-        "php": ">=8.1"
+        "php": ">=8.1",
+        "sandromiguel/php-caster": "dev-main"
     },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.11",

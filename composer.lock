@@ -4,8 +4,110 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81f07c337c739a5b5191012143684ca2",
-    "packages": [],
+    "content-hash": "2d7deb284121c39792e274b91d335704",
+    "packages": [
+        {
+            "name": "sandromiguel/php-caster",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:SandroMiguel/php-caster.git",
+                "reference": "1f3d9fa253e1006096350234a60c4c2ffd15a702"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SandroMiguel/php-caster/zipball/1f3d9fa253e1006096350234a60c4c2ffd15a702",
+                "reference": "1f3d9fa253e1006096350234a60c4c2ffd15a702",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "nunomaduro/phpinsights": "^2.11",
+                "phan/phan": "^5.4",
+                "phpmetrics/phpmetrics": "^2.8",
+                "phpspec/phpspec": "^7.5",
+                "phpstan/phpstan": "^1.11",
+                "phpunit/phpunit": "^9",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "roave/security-advisories": "dev-master",
+                "vimeo/psalm": "^5.25"
+            },
+            "default-branch": true,
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "PhpCaster\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "PhpCaster\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "outdated:direct": [
+                    "composer outdated --direct"
+                ],
+                "phpcs": [
+                    "~/.config/composer/vendor/bin/phpcs -s src"
+                ],
+                "phpcs:file": [
+                    "~/.config/composer/vendor/bin/phpcs -s"
+                ],
+                "phpinsights": [
+                    "phpinsights analyse src/ -v"
+                ],
+                "phpmetrics": [
+                    "vendor/bin/phpmetrics --report-html=storage/log/php_metrics_report . && node --version"
+                ],
+                "phpstan": [
+                    "phpstan analyse src --level 7"
+                ],
+                "psalm": [
+                    "psalm --show-info=true"
+                ],
+                "logs": [
+                    "tail -f ./storage/log/app.log"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test:filter": [
+                    "phpunit --filter"
+                ],
+                "test:coverage": [
+                    "phpunit --coverage-html log/report"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sandro Miguel Marques",
+                    "email": "sandromiguel@sandromiguel.com",
+                    "homepage": "http://sandromiguel.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handling and ensuring data type consistency in database query results.",
+            "homepage": "https://github.com/SandroMiguel/php-caster",
+            "keywords": [
+                "cast",
+                "database",
+                "php",
+                "query",
+                "type"
+            ],
+            "support": {
+                "issues": "https://github.com/SandroMiguel/php-caster/issues",
+                "source": "https://github.com/SandroMiguel/php-caster/tree/main"
+            },
+            "time": "2024-07-18T10:48:01+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "amphp/amp",
@@ -7775,6 +7877,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "sandromiguel/php-caster": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
