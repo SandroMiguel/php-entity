@@ -10,7 +10,9 @@
  * @version 1.0.0 (2024-07-18)
  */
 
-namespace PhpCore\Entity;
+declare(strict_types=1);
+
+namespace PhpEntity;
 
 /**
  * Base class for entities.
@@ -50,6 +52,6 @@ abstract class AbstractEntity
             );
         }
 
-        return new static(...$args);
+        return $reflection->newInstanceArgs($args);
     }
 }
