@@ -1,7 +1,7 @@
 {
-    "name": "sandromiguel/php-sceleto",
+    "name": "sandromiguel/php-entity",
     "description": "Sample of PHP file structure.",
-    "homepage": "https://github.com/SandroMiguel/php-sceleto",
+    "homepage": "https://github.com/SandroMiguel/php-entity",
     "keywords": [
         "php",
         "directory",
@@ -20,16 +20,16 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/SandroMiguel/php-sceleto/issues"
+        "issues": "https://github.com/SandroMiguel/php-entity/issues"
     },
     "autoload": {
         "psr-4": {
-            "PhpSceleto\\": "src/"
+            "PhpEntity\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpSceleto\\Tests\\": "tests/"
+            "PhpEntity\\Tests\\": "tests/"
         }
     },
     "config": {

@@ -12,14 +12,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "php-sceleto",\
+        "name": "php-entity",\
         "reference": "workspace:."\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["php-sceleto", ["workspace:."]]\
+      ["php-entity", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -1351,11 +1351,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["php-sceleto", [\
+      ["php-entity", [\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["php-sceleto", "workspace:."],\
+            ["php-entity", "workspace:."],\
             ["cz-conventional-changelog", "npm:3.3.0"]\
           ],\
           "linkType": "SOFT"\
