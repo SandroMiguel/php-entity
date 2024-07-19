@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0 (2024-07-19)
+
+
+### Features
+
+* **AbstractEntity.php:** add scalar type ([2abfe8a](https://github.com/SandroMiguel/php-entity/commit/2abfe8a140c4f8362113d935967b7e406c32d4c9))
+* **AbstractEntity.php:** base class for entities ([1437b26](https://github.com/SandroMiguel/php-entity/commit/1437b2694afdbc1d296dea62a09ee1f89f1ecc85))
+* **AbstractEntity.php:** return instance with reflection ([68c60b9](https://github.com/SandroMiguel/php-entity/commit/68c60b97a6eb18f936aa90e85341f8119505e164))
+* initial commit ([b8f0bae](https://github.com/SandroMiguel/php-entity/commit/b8f0baead52bedf4ddd51679703f0c7a0e3ddb56))
+
 ## [2.3.0](https://github.com/SandroMiguel/php-sceleto/compare/v2.2.0...v2.3.0) (2024-07-13)
 
 
