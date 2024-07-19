@@ -22,7 +22,7 @@ abstract class AbstractEntity
     /**
      * Hydrates an entity with data from an array.
      *
-     * @param array<string,int|string|null> $properties Array containing the
+     * @param array<string,scalar|null> $properties Array containing the
      *  entity properties. This array can typically be obtained from a database
      *  query result or an API payload.
      *
