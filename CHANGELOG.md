@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/SandroMiguel/php-entity/compare/v1.0.0...v1.1.0) (2026-03-17)
+
+
+### Features
+
+* **AbstractEntity.php:** use plural names for multilang purposes ([01eb3ec](https://github.com/SandroMiguel/php-entity/commit/01eb3ec2004b2fd69084803b9e19e7fcb77b81d0))
+
 ## 1.0.0 (2026-03-17)
 
 
