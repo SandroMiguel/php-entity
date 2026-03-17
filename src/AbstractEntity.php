@@ -77,7 +77,6 @@ abstract class AbstractEntity
     protected static function preHydrate(array $properties): array
     {
         foreach ($properties as $key => $value) {
-
             if (!\preg_match('/^(.+)_([0-9]+)$/', $key, $matches)) {
                 continue;
             }
