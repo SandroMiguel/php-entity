@@ -84,10 +84,8 @@ abstract class AbstractEntity
             $base = $matches[1];
             $locale = (int) $matches[2];
 
-            $targetProperty = $base . 's';
-
-            $properties[$targetProperty] ??= [];
-            $properties[$targetProperty][$locale] = $value;
+            $properties[$base] ??= [];
+            $properties[$base][$locale] = $value;
 
             unset($properties[$key]);
         }
