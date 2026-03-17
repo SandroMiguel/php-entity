@@ -7,7 +7,7 @@
  * @license MIT https://github.com/SandroMiguel/php-entity/blob/master/LICENSE
  * @author Sandro Miguel Marques <sandromiguel@sandromiguel.com>
  * @link https://github.com/SandroMiguel/php-entity
- * @version 1.0.0 (2024-07-18)
+ * @version 1.1.0 (2026-03-17)
  */
 
 declare(strict_types=1);
@@ -30,6 +30,7 @@ abstract class AbstractEntity
      */
     public static function hydrate(array $properties): static
     {
+        $properties = static::preHydrate($properties);
         $reflection = new \ReflectionClass(static::class);
         $reflectionProperties = $reflection->getProperties(
             \ReflectionProperty::IS_PUBLIC
@@ -39,6 +40,13 @@ abstract class AbstractEntity
         foreach ($reflectionProperties as $property) {
             $propertyName = $property->getName();
             $propertyType = (string) $property->getType();
+
+            // If the property does not exist, skip it
+            if ($propertyType === 'array') {
+                if (!isset($properties[$propertyName])) {
+                    continue;
+                }
+            }
 
             $propertyTypeName = \strpos($propertyType, '?') === 0
                 ? \substr($propertyType, 1)
@@ -55,5 +63,36 @@ abstract class AbstractEntity
         }
 
         return $reflection->newInstanceArgs($args);
+    }
+
+    /**
+     * Pre-hydrate method.
+     *
+     * @param array<string,scalar|null> $properties Array containing the
+     *  entity properties. This array can typically be obtained from a database
+     *  query result or an API payload.
+     *
+     * @return array<string,scalar|null> The pre-hydrated array.
+     */
+    protected static function preHydrate(array $properties): array
+    {
+        foreach ($properties as $key => $value) {
+
+            if (!\preg_match('/^(.+)_([0-9]+)$/', $key, $matches)) {
+                continue;
+            }
+
+            $base = $matches[1];
+            $locale = (int) $matches[2];
+
+            $targetProperty = $base . 's';
+
+            $properties[$targetProperty] ??= [];
+            $properties[$targetProperty][$locale] = $value;
+
+            unset($properties[$key]);
+        }
+
+        return $properties;
     }
 }

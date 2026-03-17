@@ -7,7 +7,7 @@
  * @license MIT https://github.com/SandroMiguel/php-entity/blob/master/LICENSE
  * @author Sandro Miguel Marques <sandromiguel@sandromiguel.com>
  * @link https://github.com/SandroMiguel/php-entity
- * @version 1.0.0 (2024-07-18)
+ * @version 1.1.0 (2026-03-17)
  */
 
 declare(strict_types=1);
@@ -34,6 +34,7 @@ class AbstractEntityTest extends TestCase
             'idUser' => 1,
             'username' => 'john_doe',
             'email' => 'john_doe@example.com',
+            'bios' => [],
             'createdAt' => '2024-07-18 12:34:56',
             'updatedAt' => '2024-07-18 12:34:56',
         ];
@@ -65,6 +66,7 @@ class AbstractEntityTest extends TestCase
             'idUser' => 1,
             'username' => 'john_doe',
             'email' => 'john_doe@example.com',
+            'bios' => [],
             'createdAt' => null,
             'updatedAt' => null,
         ];
@@ -89,6 +91,7 @@ class AbstractEntityTest extends TestCase
         $data = [
             'idUser' => 1,
             'username' => 'john_doe',
+            'bios' => [],
         ];
 
         $userEntity = UserEntity::hydrate($data);
@@ -113,6 +116,7 @@ class AbstractEntityTest extends TestCase
             'idUser' => 'hello', // Should be integer, but is string
             'username' => 'john_doe',
             'email' => 'john_doe@example.com',
+            'bios' => [],
             'createdAt' => '2024-07-18 12:34:56',
             'updatedAt' => '2024-07-18 12:34:56',
         ];
@@ -131,5 +135,84 @@ class AbstractEntityTest extends TestCase
             new \DateTimeImmutable('2024-07-18 12:34:56'),
             $userEntity->updatedAt
         );
+    }
+
+    /**
+     * Tests the hydrate method with translations.
+     *
+     * Ensures that the hydrate method correctly handles translations.
+     */
+    public function testHydrateWithTranslations(): void
+    {
+        $data = [
+            'idUser' => 1,
+            'bio_1' => 'Caminhante português',
+            'bio_3' => 'Portuguese hiker',
+        ];
+
+        $userEntity = UserEntity::hydrate($data);
+
+        $this->assertSame(
+            [
+                1 => 'Caminhante português',
+                3 => 'Portuguese hiker',
+            ],
+            $userEntity->bios
+        );
+    }
+
+    /**
+     * Tests the hydrate method with mixed fields.
+     *
+     * Ensures that the hydrate method correctly handles mixed fields.
+     */
+    public function testHydrateWithMixedFields(): void
+    {
+        $data = [
+            'idUser' => 1,
+            'username' => 'john_doe',
+            'displayName' => 'John',
+            'bio_1' => 'Caminhante português',
+            'bio_3' => 'Portuguese hiker',
+        ];
+
+        $userEntity = UserEntity::hydrate($data);
+
+        $this->assertSame('john_doe', $userEntity->username);
+
+        $this->assertSame(
+            [
+                1 => 'Caminhante português',
+                3 => 'Portuguese hiker',
+            ],
+            $userEntity->bios
+        );
+    }
+
+    /**
+     * Tests the hydrate method with translation keys.
+     *
+     * Ensures that the hydrate method removes translation keys.
+     */
+    public function testTranslationKeysAreRemoved(): void
+    {
+        $data = [
+            'bio_1' => 'PT',
+        ];
+
+        $userEntity = UserEntity::hydrate($data);
+
+        $this->assertObjectNotHasProperty('bio_1', $userEntity);
+    }
+
+    public function testHydrateIgnoresNonNumericLocale(): void
+    {
+        $data = [
+            'bio_pt' => 'Caminhante',
+        ];
+
+        $userEntity = UserEntity::hydrate($data);
+
+        $this->assertSame([], $userEntity->bios);
     }
 }

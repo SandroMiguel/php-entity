@@ -1,10 +1,45 @@
 # PhpEntity
 
-**A PHP package for efficiently populating entity objects from database query results, API payloads, or simple arrays.**
+**A PHP package for efficiently hydrating entity objects from arrays, database results, or API payloads.**
 
 ## Overview
 
-PhpEntity is a PHP package designed to streamline the creation of entity objects from arrays. It includes `AbstractEntity`, an abstract class that simplifies the instantiation of entity objects by populating them with data from arrays. This package facilitates efficient object hydration from various sources such as database query results, API payloads, or simple arrays, making it versatile for a wide range of PHP applications.
+PhpEntity provides a simple and powerful way to transform associative arrays into fully-typed PHP objects.
+
+At its core is the `AbstractEntity` class, which uses reflection and type casting to automatically map array data into entity properties.
+
+It also includes built-in support for multilingual fields, allowing you to define translations using a simple naming convention.
+
+## Features
+
+- Automatic entity hydration from arrays
+- Strong typing with automatic casting via `PhpCaster`
+- Native support for `DateTimeImmutable`
+- Built-in multilingual field handling
+- Zero configuration required
+
+## Installation
+
+To include PhpEntity in your project, add the following line to your `composer.json` file:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "git@github.com:SandroMiguel/php-entity.git"
+    }
+],
+```
+
+Then, require the package in your `composer.json` file:
+
+```json
+"require": {
+    "sandromiguel/php-entity": "dev-main"
+}
+```
+
+Afterward, run `composer update` to download the package.
 
 ## Usage
 
@@ -17,6 +52,7 @@ class UserEntity extends AbstractEntity
         public ?int $idUser = null,
         public ?string $username = null,
         public ?string $email = null,
+        public array $bios = [],
         public ?\DateTimeImmutable $createdAt = null,
         public ?\DateTimeImmutable $updatedAt = null
     ) {}
@@ -40,4 +76,36 @@ $trailEntity = TrailEntity::hydrate($row);
 
 echo $trailEntity->idUser; // Outputs: 1
 echo $trailEntity->username; // Outputs: john_doe
+```
+
+### Multilingual Fields
+
+PhpEntity supports multilingual properties out of the box using a simple naming convention.
+
+#### Input format
+
+Use the pattern:
+
+```php
+field_locale
+```
+
+where `field` is the name of the field and `locale` is the language code (language ID).
+
+#### Example
+
+```php
+$data = [
+    'bio_1' => 'Caminhante português',
+    'bio_3' => 'Portuguese hiker',
+]
+```
+
+#### Result
+
+```php
+$userEntity = UserEntity::hydrate($data);
+
+echo $userEntity->bios[1]; // Outputs: Caminhante português
+echo $userEntity->bios[3]; // Outputs: Portuguese hiker
 ```
